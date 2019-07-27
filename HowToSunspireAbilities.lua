@@ -21,11 +21,16 @@ HowToSunspire.AbilitiesToTrack = {
     [122820] = HowToSunspire.LokkeLaser, --first jump of lokke
     [122821] = HowToSunspire.LokkeLaser, --second jump of lokke
     [122822] = HowToSunspire.LokkeLaser, --third jump of lokke
-   
+	
+	[124546] = HowToSunspire.LavaGeyser, -- LavaGeyser
+    [121411] = HowToSunspire.Negate, -- Negate
+	[88129] = HowToSunspire.Atro, -- Fire Atro
+	
     [120188] = HowToSunspire.SweepingBreath, --fire sweeping breath >>>>
     [118743] = HowToSunspire.SweepingBreath, --fire sweeping breath <<<<
     [118860] = HowToSunspire.FireSpit, --when nahvin spit fire ball on you that will pop an atronach during lokke fight
     [115592] = HowToSunspire.FireSpit, --same but during nahvin fight
+    [118562] = HowToSunspire.Thrash, -- thrash of nahvi
 
     [121676] = HowToSunspire.Portal, --Portal on last boss
     [121213] = HowToSunspire.IsDownstair, --Portal used

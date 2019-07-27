@@ -23,9 +23,11 @@ function HowToSunspire.CreateSettingsWindow()
 		IceTomb = false,
 		SweepBreath = false,
 		LaserLokke = false,
+		Thrash = false,
 		Block = false,
 		Spit = false,
 		Comet = false,
+        Atro = false,
 	}
 
 	local sV = HowToSunspire.savedVariables
@@ -48,10 +50,12 @@ function HowToSunspire.CreateSettingsWindow()
 					setFunc = function(newValue)
 						Unlock.Everything = newValue
 						Hts_Ha:SetHidden(not newValue)  
-						Hts_Block:SetHidden(not newValue)  
+						Hts_Block:SetHidden(not newValue) 
+						Hts_Atro:SetHidden(not newValue) 						
 						Hts_Ice:SetHidden(not newValue)
 						Hts_Laser:SetHidden(not newValue)
 						Hts_Sweep:SetHidden(not newValue)
+						Hts_Thrash:SetHidden(not newValue)
 						Hts_Down:SetHidden(not newValue)
 						Hts_Spit:SetHidden(not newValue)
 						Hts_Comet:SetHidden(not newValue) 
@@ -75,6 +79,16 @@ function HowToSunspire.CreateSettingsWindow()
 					setFunc = function(newValue)
 						Unlock.Block = newValue
 						Hts_Block:SetHidden(not newValue)  
+					end,
+				},
+				{	type = "checkbox",
+					name = "Unlock Fire Atro Spawn",
+					tooltip = "Use it to set the position of the fire atro spawn text.",
+					default = false,
+					getFunc = function() return Unlock.Atro end,
+					setFunc = function(newValue)
+						Unlock.Atro = newValue
+						Hts_Atro:SetHidden(not newValue)  
 					end,
 				},
 				{	type = "checkbox",
@@ -117,6 +131,16 @@ function HowToSunspire.CreateSettingsWindow()
 						Hts_Sweep:SetHidden(not newValue)
 					end,
 				},
+				{	type = "checkbox",
+					name = "Unlock Thrash",
+					tooltip = "Use it to set the position of the thrash that you have to block or roll dodge.",
+					default = false,
+					getFunc = function() return Unlock.Thrash end,
+					setFunc = function(newValue)
+						Unlock.Thrash = newValue
+						Hts_Thrash:SetHidden(not newValue)
+					end,
+				},		
 				{	type = "checkbox",
 					name = "Unlock Fire Spit",
 					tooltip = "Use it to set the position of the fire spit that will pop an atronach.",
@@ -200,6 +224,19 @@ function HowToSunspire.CreateSettingsWindow()
 		},
 		{
 			type = "header",
+			name = "Yolnahkriin Notifications",
+        },
+		{	type = "checkbox",
+			name = "Enable Fire Atro Spawn",
+			tooltip = "To enable or not the tracking of the fire atronarch spawn.",
+			default = true,
+			getFunc = function() return sV.Enable.Atro end,
+			setFunc = function(newValue)  
+				sV.Enable.Atro = newValue
+			end,
+		},
+		{
+			type = "header",
 			name = "Nahviintaas Notifications",
 		},
 		{	type = "description",
@@ -212,6 +249,15 @@ function HowToSunspire.CreateSettingsWindow()
 			getFunc = function() return sV.Enable.SweepBreath end,
 			setFunc = function(newValue)
 				sV.Enable.SweepBreath = newValue
+			end,
+		},
+		{	type = "checkbox",
+			name = "Enable Thrash",
+			tooltip = "To track when Nahviintaas will cast the next Thrash.",
+			default = true,
+			getFunc = function() return sV.Enable.Thrash end,
+			setFunc = function(newValue)
+				sV.Enable.Thrash = newValue
 			end,
 		},
 		{	type = "checkbox",
