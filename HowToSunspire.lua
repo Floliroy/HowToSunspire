@@ -22,7 +22,7 @@ HowToSunspire.Default = {
         Block = 0,
         Spit = 0,
         Comet = 0,
-		Atro = 0,
+        Atro = 0,
     },
     OffsetY = {
         HA = 0,
@@ -34,7 +34,7 @@ HowToSunspire.Default = {
         Block = 50,
         Spit = -50,
         Comet = -150,
-		Atro = -100,
+        Atro = -100,
     },
     Enable = {
         HA = true,
@@ -48,7 +48,7 @@ HowToSunspire.Default = {
         Block = true,
         Spit = true,
         Comet = true,
-		Atro = true,
+        Atro = true,
     }
 }
 
