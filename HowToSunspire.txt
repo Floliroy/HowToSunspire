@@ -2,8 +2,9 @@
 ## Title: HowTo|c989898Sunspire|r
 ## APIVersion: 100027
 ## Author: Floliroy
-## Version: 1.0.3.2
+## Version: 1.0.5
 ## DependsOn: LibAddonMenu-2.0
+## OptionalDependsOn: LibMapPing LibGPS
 ## SavedVariables: HowToSunspireVariables
 
 ; This Add-on is not created by, affiliated with or sponsored by ZeniMax Media Inc. or its affiliates. 
@@ -18,5 +19,6 @@ Lib/LibCustomTitles/Titles/Floliroy.lua
 
 HowToSunspireSettings.lua
 HowToSunspire.lua
+HowToSunspireUI.lua
 HowToSunspireAbilities.lua
 HowToSunspire.xml
