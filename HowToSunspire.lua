@@ -30,6 +30,7 @@ HowToSunspire.Default = {
         Wipe = 0,
         Storm = 0,
         Geyser = 0,
+        Cata = 0,
     },
     OffsetY = {
         HA = 0,
@@ -45,6 +46,7 @@ HowToSunspire.Default = {
         Wipe = 150,
         Storm = -100,
         Geyser = 50,
+        Cata = -100,
     },
     Enable = {
         HA = true,
@@ -62,6 +64,7 @@ HowToSunspire.Default = {
         Wipe = true,
         Storm = true,
         Geyser = true,
+        Cata = true,
 
         Sending = false,
     },
@@ -321,6 +324,33 @@ function HowToSunspire.HideGeyser()
     EVENT_MANAGER:UnregisterForUpdate(HowToSunspire.name .. "HideGeyser")
     Hts_Geyser:SetHidden(true)
 end
+
+local cataTime
+function HowToSunspire.Cata(_, result, _, _, _, _, _, _, _, targetType, hitValue, _, _, _, _, _, abilityId)
+    if result == ACTION_RESULT_BEGIN and sV.Enable.Cata == true then
+        local currentTime = GetGameTimeMilliseconds()
+        cataTime = currentTime + hitValue
+
+        HowToSunspire.CataTimerUI()
+        Hts_Cata:SetHidden(false)
+
+        EVENT_MANAGER:UnregisterForUpdate(HowToSunspire.name .. "CataTimer")
+        EVENT_MANAGER:RegisterForUpdate(HowToSunspire.name .. "CataTimer", 100, HowToSunspire.CataTimerUI)
+    end
+end
+
+function HowToSunspire.CataTimerUI()
+    local currentTime = GetGameTimeMilliseconds()
+    local timer = cataTime - currentTime
+
+    if timer >= 0 then
+        Hts_Cata_Label:SetText("|ce51919Cataclysm Ends in: |r" .. tostring(string.format("%.1f", timer / 1000)))
+    else
+        EVENT_MANAGER:UnregisterForUpdate(HowToSunspire.name .. "CataTimer")
+        Hts_Cata:SetHidden(true)
+    end
+end
+
 ---------------------
 ---- NAHVIINTAAS ----
 ---------------------
@@ -716,6 +746,7 @@ function HowToSunspire.ResetAll()
     Hts_Wipe:SetHidden(true)
     Hts_Storm:SetHidden(true)
     Hts_Geyser:SetHidden(true)
+    Hts_Cata:SetHidden(true)
 
     --unregister UI timer events
     EVENT_MANAGER:UnregisterForUpdate(HowToSunspire.name .. "HeavyAttackTimer")
@@ -737,6 +768,7 @@ function HowToSunspire.ResetAll()
     EVENT_MANAGER:UnregisterForUpdate(HowToSunspire.name .. "PinsTimer")
     EVENT_MANAGER:UnregisterForEvent(HowToSunspire.name .. "Pins", EVENT_COMBAT_EVENT)
     EVENT_MANAGER:UnregisterForUpdate(HowToSunspire.name .. "FireStormTimer")
+    EVENT_MANAGER:UnregisterForUpdate(HowToSunspire.name .. "CataTimer")
 
     --[[if LibMapPing then
         LibMapPing:RemoveMapPing(MAP_PIN_TYPE_PING)
@@ -765,6 +797,7 @@ function HowToSunspire.ResetAll()
     canReceive = false
     canSend = false
     firstStormTrigger = true
+    cataTime = nil
 end
 
 function HowToSunspire.GetGroupTags(_, _, _, _, unitTag, _, _, _, _, _, _, _, _, unitName, unitId, _, _)

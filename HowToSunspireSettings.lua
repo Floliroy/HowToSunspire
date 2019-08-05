@@ -31,6 +31,7 @@ function HowToSunspire.CreateSettingsWindow()
 		Wipe = false,
 		Storm = false,
 		Geyser = false,
+        Cata = false,
 	}
 
 	local sV = HowToSunspire.savedVariables
@@ -65,6 +66,7 @@ function HowToSunspire.CreateSettingsWindow()
 						Hts_Wipe:SetHidden(not newValue)
 						Hts_Storm:SetHidden(not newValue)
 						Hts_Geyser:SetHidden(not newValue)
+						Hts_Cata:SetHidden(not newValue)
 					end,
 				},
 				{	type = "checkbox",
@@ -197,6 +199,16 @@ function HowToSunspire.CreateSettingsWindow()
 						Hts_Down:SetHidden(not newValue)
 					end,
 				},
+				{	type = "checkbox",
+					name = "Unlock Cataclysm",
+					tooltip = "Use it to set the position of the cataclysm.",
+					default = false,
+					getFunc = function() return Unlock.Cata end,
+					setFunc = function(newValue)
+						Unlock.Cata = newValue
+						Hts_Cata:SetHidden(not newValue)
+					end,
+				},
 			},
 		},
 		{	type = "slider",
@@ -216,6 +228,7 @@ function HowToSunspire.CreateSettingsWindow()
 				HowToSunspire.SetFontSize(Hts_Thrash_Label, newValue)
 				HowToSunspire.SetFontSize(Hts_Atro_Label, newValue)
 				HowToSunspire.SetFontSize(Hts_Wipe_Label, newValue)
+				HowToSunspire.SetFontSize(Hts_Cata_Label, newValue)
 			end,
             min = 32,
             max = 56,
@@ -299,6 +312,15 @@ function HowToSunspire.CreateSettingsWindow()
 			getFunc = function() return sV.Enable.Geyser end,
 			setFunc = function(newValue)
 				sV.Enable.Geyser = newValue
+			end,
+		},
+		{	type = "checkbox",
+			name = "Enable Cataclysm",
+			tooltip = "Counts down the remaining time until Cataclysm ends.",
+			default = true,
+			getFunc = function() return sV.Enable.Cata end,
+			setFunc = function(newValue)
+				sV.Enable.Cata = newValue
 			end,
 		},
 		{
