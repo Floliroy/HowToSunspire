@@ -31,7 +31,9 @@ function HowToSunspire.CreateSettingsWindow()
 		Wipe = false,
 		Storm = false,
 		Geyser = false,
-        Cata = false,
+    Cata = false,
+		NextFlare = false,
+		NextMeteor = false,
 	}
 
 	local sV = HowToSunspire.savedVariables
@@ -67,6 +69,8 @@ function HowToSunspire.CreateSettingsWindow()
 						Hts_Storm:SetHidden(not newValue)
 						Hts_Geyser:SetHidden(not newValue)
 						Hts_Cata:SetHidden(not newValue)
+						Hts_NextFlare:SetHidden(not newValue)
+						Hts_NextMeteor:SetHidden(not newValue)
 					end,
 				},
 				{	type = "checkbox",
@@ -140,6 +144,16 @@ function HowToSunspire.CreateSettingsWindow()
 					end,
 				},
 				{	type = "checkbox",
+					name = "Unlock Next Flare",
+					tooltip = "Use it to set the position of the Next Flare timer.",
+					default = false,
+					getFunc = function() return Unlock.NextFlare end,
+					setFunc = function(newValue)
+						Unlock.NextFlare = newValue
+						Hts_NextFlare:SetHidden(not newValue)
+					end,
+				},
+				{	type = "checkbox",
 					name = "Unlock Sweeping Breath",
 					tooltip = "Use it to set the position of the Sweeping Breath.",
 					default = false,
@@ -170,7 +184,7 @@ function HowToSunspire.CreateSettingsWindow()
 					end,
 				},
 				{	type = "checkbox",
-					name = "Unlock Flame Storm",
+					name = "Unlock Fire Storm",
 					tooltip = "Use it to set the position of the Fire Storm.",
 					default = false,
 					getFunc = function() return Unlock.Storm end,
@@ -187,6 +201,16 @@ function HowToSunspire.CreateSettingsWindow()
 					setFunc = function(newValue)
 						Unlock.Wipe = newValue
 						Hts_Wipe:SetHidden(not newValue)
+					end,
+				},
+				{	type = "checkbox",
+					name = "Unlock Next Meteor",
+					tooltip = "Use it to set the position of the Next Meteor timer.",
+					default = false,
+					getFunc = function() return Unlock.NextMeteor end,
+					setFunc = function(newValue)
+						Unlock.NextMeteor = newValue
+						Hts_NextMeteor:SetHidden(not newValue)
 					end,
 				},
 				{	type = "checkbox",
@@ -229,6 +253,10 @@ function HowToSunspire.CreateSettingsWindow()
 				HowToSunspire.SetFontSize(Hts_Atro_Label, newValue)
 				HowToSunspire.SetFontSize(Hts_Wipe_Label, newValue)
 				HowToSunspire.SetFontSize(Hts_Cata_Label, newValue)
+				HowToSunspire.SetFontSize(Hts_Storm_Label, newValue)
+				HowToSunspire.SetFontSize(Hts_Geyser_Label, newValue)
+				HowToSunspire.SetFontSize(Hts_NextFlare_Label, newValue)
+				HowToSunspire.SetFontSize(Hts_NextMeteor_Label, newValue)
 			end,
             min = 32,
             max = 56,
@@ -245,7 +273,7 @@ function HowToSunspire.CreateSettingsWindow()
 		},
 		{	type = "checkbox",
 			name = "Enable HA Tracking",
-			tooltip = "Tracks all Heavy Attacks including bosses and the enternal servant.",
+			tooltip = "Tracks all Heavy Attacks including bosses and the eternal servant.",
 			default = true,
 			getFunc = function() return sV.Enable.HA end,
 			setFunc = function(newValue)  
@@ -263,7 +291,7 @@ function HowToSunspire.CreateSettingsWindow()
 		},
 		{	type = "checkbox",
 			name = "Enable Comet / Meteor",
-			tooltip = "Tracks ALL Meteors and Comets in the trial including Nahvis Molten Meteor.",
+			tooltip = "Tracks ALL Meteors and Comets in the trial including Nahvintaas Molten Meteor.",
 			default = true,
 			getFunc = function() return sV.Enable.Comet end,
 			setFunc = function(newValue)
@@ -321,6 +349,12 @@ function HowToSunspire.CreateSettingsWindow()
 			getFunc = function() return sV.Enable.Cata end,
 			setFunc = function(newValue)
 				sV.Enable.Cata = newValue
+			name = "Enable Next Flare",
+			tooltip = "Will show you a timer that tell you in how many time the next Flare will be casted.",
+			default = true,
+			getFunc = function() return sV.Enable.NextFlare end,
+			setFunc = function(newValue)
+				sV.Enable.NextFlare = newValue
 			end,
 		},
 		{
@@ -353,6 +387,18 @@ function HowToSunspire.CreateSettingsWindow()
 			setFunc = function(newValue)
 				sV.Enable.Spit = newValue
 			end,
+		},
+		{	type = "checkbox",
+			name = "Enable Next Meteor",
+			tooltip = "Will show you a timer that tell you in how many time the next Meteor will be casted.",
+			default = true,
+			getFunc = function() return sV.Enable.NextMeteor end,
+			setFunc = function(newValue)
+				sV.Enable.NextMeteor = newValue
+			end,
+		},
+		{	type = "description",
+			text = " ",
 		},
 		{	type = "checkbox",
 			name = "Enable Fire Strom",

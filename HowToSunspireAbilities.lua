@@ -26,12 +26,17 @@ HowToSunspire.AbilitiesToTrack = {
     [124546] = HowToSunspire.LavaGeyser, --lava geyser from fire atro
     [122598] = HowToSunspire.Cata, -- Cataclysm
    
+    [121722] = HowToSunspire.NextFlare, --Focus fire casted
+    [121459] = HowToSunspire.NextFlare, --boss go fly
+
     [120188] = HowToSunspire.SweepingBreath, --fire sweeping breath >>>>
     [118743] = HowToSunspire.SweepingBreath, --fire sweeping breath <<<<
     [118860] = HowToSunspire.FireSpit, --when nahvin spit fire ball on you that will pop an atronach during lokke fight
     [115592] = HowToSunspire.FireSpit, --same but during nahvin fight
     [118562] = HowToSunspire.Thrash, -- thrash of nahvin
     [118884] = HowToSunspire.FireStorm, --room explosion of nahvin
+    [117308] = HowToSunspire.NextMeteor, --entering phase 4
+    [117938] = HowToSunspire.MarkForDeath, --cast debuff on tank
 
     [121676] = HowToSunspire.Portal, --Portal on last boss
     [121213] = HowToSunspire.IsDownstair, --Portal used
