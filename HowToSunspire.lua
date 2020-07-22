@@ -81,7 +81,7 @@ HowToSunspire.Default = {
         Cata = true,
         Leap = true,
 
-        AdvancedMeteor = true,
+        --AdvancedMeteor = true,
         Sending = false,
     },
     nameStatuesTank = "@Propet4",
@@ -668,7 +668,7 @@ local function fillPosToDrop(posToDrop, name)
     return posToDrop
 end
 
-local listUserMeteor
+--[[local listUserMeteor
 local cptUserMeteor
 local posToDrop = {}
 function HowToSunspire.AdvancedMeteor(_, result, _, _, _, _, _, _, targetName, targetType, hitValue, _, _, _, _, targetId, abilityId)
@@ -677,12 +677,12 @@ function HowToSunspire.AdvancedMeteor(_, result, _, _, _, _, _, _, targetName, t
         cptUserMeteor = 0
     end
 
-    --[[if targetId and HowToSunspire.groupMembers[targetId] and HowToSunspire.groupMembers[targetId].tag then 
+    if targetId and HowToSunspire.groupMembers[targetId] and HowToSunspire.groupMembers[targetId].tag then 
         cptUserMeteor = cptUserMeteor + 1
         cometTime = GetGameTimeMilliseconds() + hitValue
         listUserMeteor[HowToSunspire.groupMembers[targetId].name] = GetGroupMemberSelectedRole(HowToSunspire.groupMembers[targetId].tag)
         d("Test 1")
-    end]]
+    end
     
     for key, value in pairs(HowToSunspire.groupMembers) do
         if value.name == targetName then
@@ -771,7 +771,7 @@ function HowToSunspire.AdvancedMeteorUI()
         EVENT_MANAGER:UnregisterForUpdate(HowToSunspire.name .. "CometTimer")
         Hts_Comet:SetHidden(true)
     end
-end
+end]]
 
 ------------------------
 ---- LAST DOWNSTAIR ----
@@ -1140,9 +1140,9 @@ function HowToSunspire.ResetAll()
     canSend = false
     firstStormTrigger = true
     cataTime = 0
-    listUserMeteor = nil
-    cptUserMeteor = 0
-    posToDrop = {}
+    --listUserMeteor = nil
+    --cptUserMeteor = 0
+    --posToDrop = {}
 
 end
 
@@ -1190,12 +1190,19 @@ function HowToSunspire.OnPlayerActivated()
 
 end
 
+function HowToSunspire.AudioToggle()
+	SetSetting(SETTING_TYPE_AUDIO, AUDIO_SETTING_AUDIO_ENABLED, "0")
+	zo_callLater(function() SetSetting(SETTING_TYPE_AUDIO, AUDIO_SETTING_AUDIO_ENABLED, "1") end, 500)
+end
+
 function HowToSunspire:Initialize()
 	--Saved Variables
     HowToSunspire.savedVariables = ZO_SavedVars:NewAccountWide("HowToSunspireVariables", 2, nil, HowToSunspire.Default)
     sV = HowToSunspire.savedVariables
 	--Settings
-	HowToSunspire.CreateSettingsWindow()
+    HowToSunspire.CreateSettingsWindow()
+	ZO_CreateStringId("SI_BINDING_NAME_RESET_STUCK_AUDIO", "Reset Audio")
+
 	--UI
     HowToSunspire.InitUI()
 

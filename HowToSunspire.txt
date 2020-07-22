@@ -22,3 +22,4 @@ HowToSunspireUI.lua
 HowToSunspireAbilities.lua
 
 HowToSunspire.xml
+bindings.xml

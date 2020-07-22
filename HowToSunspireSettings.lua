@@ -457,7 +457,7 @@ function HowToSunspire.CreateSettingsWindow()
 				sV.Enable.NextMeteor = newValue
 			end,
 		},
-		{	type = "submenu",
+		--[[{	type = "submenu",
 			name = "Advanced Meteor Mode",
 			controls = {
 				{	type = "checkbox",
@@ -494,7 +494,7 @@ function HowToSunspire.CreateSettingsWindow()
 						end,
 				},
 			}
-		},
+		},]]
 		{	type = "description",
 			text = " ",
 		},
