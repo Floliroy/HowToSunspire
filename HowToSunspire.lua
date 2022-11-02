@@ -5,7 +5,7 @@ HowToSunspire                 = HowToSunspire or {}
 local HowToSunspire           = HowToSunspire
 
 HowToSunspire.name            = "HowToSunspire"
-HowToSunspire.version         = "1.3.9"
+HowToSunspire.version         = "1.3.10"
 HowToSunspire.slash           = "/hts"
 HowToSunspire.prefix          = "|cffffffHT|cffbf00S|r: "
 HowToSunspire.groupMembers    = {}
